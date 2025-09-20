@@ -11,6 +11,9 @@ public class Card : MonoBehaviour
     public Sprite iconSprite; //showing icon
 
     public bool isSelected = false; //check if the the card is selected.
+
+    public CardsManager manager;
+    //[SerializeField] private Animator cardAnimator;
     void Start()
     {
 
@@ -35,5 +38,10 @@ public class Card : MonoBehaviour
     {
         iconImage.sprite = hiddenSprite;
         isSelected = false;
+    }
+
+    public void CardClick()  //calls when button click and pass card as parameter
+    {
+        manager.SelectedCard(this);
     }
 }
