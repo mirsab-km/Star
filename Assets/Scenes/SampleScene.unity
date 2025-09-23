@@ -519,7 +519,7 @@ MonoBehaviour:
   - {fileID: -2107039565, guid: 92c7e5eb6b8181142afeb86244968a57, type: 3}
   - {fileID: 191953200, guid: 92c7e5eb6b8181142afeb86244968a57, type: 3}
   spritePairs: []
-  cardPrefab: {fileID: 5599945893302020611, guid: 9ceb881fd5900d3468ad115e58df9ec9, type: 3}
+  cardPrefab: {fileID: 6920475216909480096, guid: 0f82051e5b3fc4c4194f8852494b1ee2, type: 3}
   gridTransform: {fileID: 151104623}
 --- !u!4 &1612048687
 Transform:

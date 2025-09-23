@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
     public bool isSelected = false; //check if the the card is selected.
 
     public CardsManager manager;
-    //[SerializeField] private Animator cardAnimator;
+    public Animator animator;
     void Start()
     {
 
@@ -30,14 +30,26 @@ public class Card : MonoBehaviour
     }
     public void Show()  //Sets the cards icon as revealed image and mark it as selectecd
     {
+        animator.SetTrigger("Flip");
         iconImage.sprite = iconSprite;
         isSelected = true;
     }
 
     public void Hide()  //Resets the card icon to default and mar it as unselected
     {
+        animator.SetTrigger("FlipBack");
         iconImage.sprite = hiddenSprite;
         isSelected = false;
+    }
+
+    public void Match()
+    {
+        animator.SetTrigger("Match");
+    }
+
+    public void DisableCard()
+    {
+        gameObject.SetActive(false);
     }
 
     public void CardClick()  //calls when button click and pass card as parameter

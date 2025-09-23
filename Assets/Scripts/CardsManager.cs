@@ -12,6 +12,8 @@ public class CardsManager : MonoBehaviour //this scripts handles the pairing log
     [SerializeField] private Card cardPrefab;  //card prefab which has Card Script
     [SerializeField] private Transform gridTransform;
 
+    //private bool canSelect = true;
+
     private Card firstCard;
     private Card secondCard;
     void Start()
@@ -61,10 +63,8 @@ public class CardsManager : MonoBehaviour //this scripts handles the pairing log
 
     public void SelectedCard(Card card)
     {
-        if (card.isSelected == false)
-        {
-            card.Show();
-        }
+        Debug.Log("Pressed");
+        card.Show();
 
         if (firstCard == null)
         {
@@ -76,21 +76,27 @@ public class CardsManager : MonoBehaviour //this scripts handles the pairing log
         {
             secondCard = card;
             StartCoroutine(CardMatch(firstCard, secondCard));
-            firstCard = null;
-            secondCard = null;
         }
+
+        // Reset after match check is complete
+        firstCard = null;
+        secondCard = null;
     }
+
+
 
     private IEnumerator CardMatch(Card a, Card b)
     {
-        yield return new WaitForSecondsRealtime(0.3f);
+
+        yield return new WaitForSeconds(1f); // wait to show cards
+
         if (a.iconSprite == b.iconSprite)
         {
-            Debug.Log("Matched");
+            a.Match();
+            b.Match();
         }
         else
         {
-            //Flip Cards Back
             a.Hide();
             b.Hide();
         }
