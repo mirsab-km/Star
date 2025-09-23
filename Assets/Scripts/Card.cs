@@ -39,12 +39,14 @@ public class Card : MonoBehaviour
     {
         animator.SetTrigger("FlipBack");
         iconImage.sprite = hiddenSprite;
+        AudioManager.Instance.NotMatchSound(AudioManager.Instance.missmatchSoundClip);
         isSelected = false;
     }
 
     public void Match()
     {
         animator.SetTrigger("Match");
+        AudioManager.Instance.MatchSound(AudioManager.Instance.matchSoundClip);
     }
 
     public void DisableCard()
@@ -55,5 +57,6 @@ public class Card : MonoBehaviour
     public void CardClick()  //calls when button click and pass card as parameter
     {
         manager.SelectedCard(this);
+        AudioManager.Instance.CardSound(AudioManager.Instance.cardSoundClip);
     }
 }

@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardsManager : MonoBehaviour //this scripts handles the pairing logic
@@ -63,7 +61,11 @@ public class CardsManager : MonoBehaviour //this scripts handles the pairing log
 
     public void SelectedCard(Card card)
     {
-        Debug.Log("Pressed");
+        if (card == firstCard)  //prevents selecting the same card twice
+        {
+            return;
+        }
+
         card.Show();
 
         if (firstCard == null)
@@ -88,7 +90,7 @@ public class CardsManager : MonoBehaviour //this scripts handles the pairing log
     private IEnumerator CardMatch(Card a, Card b)
     {
 
-        yield return new WaitForSeconds(1f); // wait to show cards
+        yield return new WaitForSeconds(0.8f); // wait to show cards
 
         if (a.iconSprite == b.iconSprite)
         {
