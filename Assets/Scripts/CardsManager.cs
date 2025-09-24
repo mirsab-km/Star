@@ -31,14 +31,13 @@ public class CardsManager : MonoBehaviour //this scripts handles the pairing log
         }
 
         gridLayoutGroup = gridTransform.GetComponent<GridLayoutGroup>();
-
-        GameManager.Instance.totalPairs = (rows * columns) / 2;
     }
 
     void Start()
     {
         PrepareCards();
         PrepareGrid();
+        GameManager.Instance.totalPairs = (rows * columns) / 2;
     }
 
     void Update()

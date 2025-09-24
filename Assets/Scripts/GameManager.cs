@@ -26,15 +26,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        currentTries = maxTries;
-        UpdateTriesUI();
-        UpdateScoreUI();
     }
 
     void Start()
     {
-        
+        currentTries = maxTries;
+        UpdateTriesUI();
+        UpdateScoreUI();
     }
 
     void Update()
@@ -50,7 +48,9 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
 
         if (matchedPairs >= totalPairs)
+        {
             WinGame();
+        }
     }
 
     public void CardMismatched(int point)  // call when player flips two cards that don’t match
@@ -63,21 +63,33 @@ public class GameManager : MonoBehaviour
     void DeductTry()
     {
         currentTries--;
+
+        if (score < 0)
+        {
+            score = 0;
+        }
+
         UpdateTriesUI();
 
         if (currentTries <= 0)
+        {
             LoseGame();
+        }
     }
     void UpdateTriesUI()
     {
         if (triesText != null)
+        {
             triesText.text = "Tries: " + currentTries;
+        }
     }
 
     void UpdateScoreUI()
     {
         if (scoreText != null)
+        {
             scoreText.text = "Score: " + score;
+        }
     }
 
     void WinGame()
