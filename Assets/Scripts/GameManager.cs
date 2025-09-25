@@ -16,6 +16,16 @@ public class GameManager : MonoBehaviour
     public int score;
     public int totalPairs;
     private int matchedPairs;
+
+    private int currentStreak = 0;   
+    public int normalScore = 5;     
+    public int streakScore = 10;    
+
+
+    [SerializeField] private GameObject GameWinPanel;
+    [SerializeField] private GameObject GameOverPanel;
+    [SerializeField] private GameObject GamePanel;
+    [SerializeField] private GameObject PauseButton;
     private void Awake()
     {
         if (Instance == null)
@@ -39,11 +49,13 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void CardMatched(int point)
+    public void CardMatched()
     {
-        score += point;
+        currentStreak++; // increase streak
+
+        int pointsToAdd = currentStreak > 1 ? streakScore : normalScore; // if streak > 1, give streak bonus
+        score += pointsToAdd;
         matchedPairs++;
-        DeductTry();
 
         UpdateScoreUI();
 
@@ -53,9 +65,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CardMismatched(int point)  // call when player flips two cards that don’t match
+
+    public void CardMismatched()
     {
-        score -= point;
+        currentStreak = 0;  //streak broken
+        score -= normalScore; 
         DeductTry();
         UpdateScoreUI();
     }
@@ -73,6 +87,7 @@ public class GameManager : MonoBehaviour
 
         if (currentTries <= 0)
         {
+            currentTries = 0;
             LoseGame();
         }
     }
@@ -95,13 +110,35 @@ public class GameManager : MonoBehaviour
     void WinGame()
     {
         Debug.Log("You Won!");
-        // Show Win UI panel here
+        AudioManager.Instance.VictorySound();
+        GamePanel.SetActive(false);
+        PauseButton.SetActive(false);
+        triesText.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        StartCoroutine(ShowWinPanel(1f));
+    }
+
+    IEnumerator ShowWinPanel(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameWinPanel.SetActive(true);
     }
 
     void LoseGame()
     {
         Debug.Log("Game Over!");
-        // Show Game Over UI panel here
+        AudioManager.Instance.GameOverSound();
+        GamePanel.SetActive(false);
+        PauseButton.SetActive(false);
+        triesText.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        StartCoroutine(ShowGameOverPanel(1f));
+    }
+
+    IEnumerator ShowGameOverPanel(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameWinPanel.SetActive(true);
     }
 
 }

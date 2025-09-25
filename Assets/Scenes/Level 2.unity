@@ -2814,7 +2814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rows: 2
-  columns: 2
+  columns: 3
   sprites:
   - {fileID: -2107039565, guid: 92c7e5eb6b8181142afeb86244968a57, type: 3}
   - {fileID: 191953200, guid: 92c7e5eb6b8181142afeb86244968a57, type: 3}
@@ -2862,7 +2862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca47b9b3a2a9ba047a07f4d5325a0546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTries: 4
+  maxTries: 6
   triesText: {fileID: 1236281242}
   scoreText: {fileID: 1627551089}
   score: 0

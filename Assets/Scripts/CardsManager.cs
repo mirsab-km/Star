@@ -157,11 +157,11 @@ public class CardsManager : MonoBehaviour //this scripts handles the pairing log
         {
             a.Match();
             b.Match();
-            GameManager.Instance.CardMatched(10);
+            GameManager.Instance.CardMatched();
         }
         else
         {
-            GameManager.Instance.CardMismatched(5);
+            GameManager.Instance.CardMismatched();
             a.Hide();
             b.Hide();
         }

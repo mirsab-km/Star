@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip cardSoundClip;
     public AudioClip matchSoundClip;
     public AudioClip missmatchSoundClip;
+    public AudioClip victorySoundClip;
+    public AudioClip gameOverSoundClip;
 
     private void Awake()
     {
@@ -21,29 +23,29 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
+
+    public void CardSound()
     {
-        
+        audioSource.PlayOneShot(cardSoundClip);
     }
 
-    void Update()
+    public void MatchSound()
     {
-        
+        audioSource.PlayOneShot(matchSoundClip);
     }
 
-    public void CardSound(AudioClip clip)
+    public void NotMatchSound()
     {
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(missmatchSoundClip);
     }
 
-    public void MatchSound(AudioClip clip)
+    public void VictorySound()
     {
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(victorySoundClip);
     }
 
-    public void NotMatchSound(AudioClip clip)
+    public void GameOverSound()
     {
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(gameOverSoundClip);
     }
-
 }
