@@ -5,7 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    public AudioSource audioSource;
+
+    public AudioSource sfxSource;
+
     public AudioClip cardSoundClip;
     public AudioClip matchSoundClip;
     public AudioClip missmatchSoundClip;
@@ -26,26 +28,26 @@ public class AudioManager : MonoBehaviour
 
     public void CardSound()
     {
-        audioSource.PlayOneShot(cardSoundClip);
+        sfxSource.PlayOneShot(cardSoundClip);
     }
 
     public void MatchSound()
     {
-        audioSource.PlayOneShot(matchSoundClip);
+        sfxSource.PlayOneShot(matchSoundClip);
     }
 
     public void NotMatchSound()
     {
-        audioSource.PlayOneShot(missmatchSoundClip);
+        sfxSource.PlayOneShot(missmatchSoundClip);
     }
 
     public void VictorySound()
     {
-        audioSource.PlayOneShot(victorySoundClip);
+        sfxSource.PlayOneShot(victorySoundClip);
     }
 
     public void GameOverSound()
     {
-        audioSource.PlayOneShot(gameOverSoundClip);
+        sfxSource.PlayOneShot(gameOverSoundClip);
     }
 }

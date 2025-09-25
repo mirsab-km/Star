@@ -45,10 +45,6 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
     }
 
-    void Update()
-    {
-        
-    }
     public void CardMatched()
     {
         currentStreak++; // increase streak
@@ -115,12 +111,6 @@ public class GameManager : MonoBehaviour
         PauseButton.SetActive(false);
         triesText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
-        StartCoroutine(ShowWinPanel(1f));
-    }
-
-    IEnumerator ShowWinPanel(float delay)
-    {
-        yield return new WaitForSeconds(delay);
         GameWinPanel.SetActive(true);
     }
 
@@ -132,13 +122,6 @@ public class GameManager : MonoBehaviour
         PauseButton.SetActive(false);
         triesText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
-        StartCoroutine(ShowGameOverPanel(1f));
-    }
-
-    IEnumerator ShowGameOverPanel(float delay)
-    {
-        yield return new WaitForSeconds(delay);
         GameWinPanel.SetActive(true);
     }
-
 }

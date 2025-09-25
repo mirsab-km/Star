@@ -5,19 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     public GameObject HomePanel;
     public GameObject levelsPanel;
     public GameObject PausePanel;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void PlayButton()
     {
         HomePanel.SetActive(false);
@@ -51,6 +42,7 @@ public class UIManager : MonoBehaviour
     public void Retry()
     {
         Time.timeScale = 1;
+
         // Reload the current active scene
         string currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
